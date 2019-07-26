@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.4 (67378) - http://www.bohemiancoding.com/sketch -->
+    <title>c3p-info</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="C3p-icon-pack" transform="translate(-1731.000000, -86.000000)" fill="#000000">
+            <g id="Group" transform="translate(63.000000, 86.000000)">
+                <g id="c3p-info" transform="translate(1668.000000, 0.000000)">
+                    <path d="M12.005,8.25 C11.3836797,8.25 10.88,7.74632034 10.88,7.125 C10.88,6.50367966 11.3836797,6 12.005,6 C12.6263203,6 13.13,6.50367966 13.13,7.125 C13.13,7.74632034 12.6263203,8.25 12.005,8.25 Z M12,9.795 C12.6179431,9.80307872 13.1169213,10.3020569 13.125,10.92 L13.125,16.92 C13.125,17.5413203 12.6213203,18.045 12,18.045 C11.3786797,18.045 10.875,17.5413203 10.875,16.92 L10.875,10.92 C10.8830787,10.3020569 11.3820569,9.80307872 12,9.795 Z" id="Shape"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

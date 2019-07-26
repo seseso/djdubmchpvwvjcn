@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.4 (67378) - http://www.bohemiancoding.com/sketch -->
+    <title>c3p-arrow-down</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M1.36399258,7.78094389 C1.07283983,7.54016269 0.941306953,7.15219252 1.02467597,6.78009357 C1.10804499,6.40799461 1.39186431,6.11626833 1.75684737,6.02752451 C2.12183042,5.93878069 2.50470925,6.06840262 2.74456352,6.36191144 L11.8119562,15.5831153 L20.8842796,6.36191144 C21.1290988,6.08812587 21.5022844,5.97370285 21.8551144,6.06424217 C22.2079445,6.1547815 22.4830709,6.43556714 22.5708505,6.79470053 C22.6586302,7.15383392 22.5447954,7.53294243 22.2747117,7.78094389 L12.5170335,17.7041426 C12.3305404,17.89494 12.0764874,18.0015372 11.8119562,17.9999832 C11.5491327,18.000195 11.2971001,17.8937009 11.1118095,17.7041426 L1.36399258,7.78094389 Z" id="path-1"></path>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="C3p-icon-pack" transform="translate(-1839.000000, -302.000000)">
+            <g id="Group" transform="translate(63.000000, 86.000000)">
+                <g id="c3p-arrow-down" transform="translate(1776.000000, 216.000000)">
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <use id="Mask" fill="#000000" xlink:href="#path-1"></use>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

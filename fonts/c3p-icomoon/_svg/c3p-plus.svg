@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.4 (67378) - http://www.bohemiancoding.com/sketch -->
+    <title>c3p-plus</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M4.98846156,12.8961541 L10.9192309,12.8961541 L10.9192309,18.8269234 C10.9192309,19.3725542 11.3620617,19.815385 11.9076925,19.815385 C12.4533233,19.815385 12.8961541,19.3725542 12.8961541,18.8269234 L12.8961541,12.8961541 L18.8269234,12.8961541 C19.3725542,12.8961541 19.815385,12.4533233 19.815385,11.9076925 C19.815385,11.3620617 19.3725542,10.9192309 18.8269234,10.9192309 L12.8961541,10.9192309 L12.8961541,4.98846156 C12.8961541,4.44283078 12.4533233,4 11.9076925,4 C11.3620617,4 10.9192309,4.44283078 10.9192309,4.98846156 L10.9192309,10.9192309 L4.98846156,10.9192309 C4.44283078,10.9192309 4,11.3620617 4,11.9076925 C4,12.4533233 4.44283078,12.8961541 4.98846156,12.8961541" id="path-1"></path>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="C3p-icon-pack" transform="translate(-1839.000000, -86.000000)">
+            <g id="Group" transform="translate(63.000000, 86.000000)">
+                <g id="c3p-plus" transform="translate(1776.000000, 0.000000)">
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <use id="Mask" fill="#000000" xlink:href="#path-1"></use>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
