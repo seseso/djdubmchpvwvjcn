@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!--link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" /-->
+        <link rel="stylesheet" href="fonts/c3p-icomoon/style.css" />
+        
+        <style>
+            
+            @font-face {
+                font-family: 'VisbyCF-ExtraBold';
+                src:
+                  url('fonts/Visby-CF/VisbyCF-ExtraBold.ttf?3g2g43') format('truetype'),
+                  url('fonts/Visby-CF/VisbyCF-ExtraBold.woff?3g2g43') format('woff');
+            }
+            
+            @font-face {
+                font-family: 'VisbyCF-DemiBold';
+                src:
+                  url('fonts/Visby-CF/VisbyCF-DemiBold.ttf?3g2g43') format('truetype'),
+                  url('fonts/Visby-CF/VisbyCF-DemiBold.woff?3g2g43') format('woff');
+            }
+            
+            
+            html,   body {   width: 100%;   height: 100%;   margin: 0;   padding: 0;   font: 10px sans-serif; }  html{   position: relative;   background: #eee; }  #graph_container{   width: 100%;   height: 100%; } .demo-box-1{   position: absolute;   left: 30px;   top: 30px;   width: 60%;   font-size: 16px; } .demo-box-2{   position: absolute;   right: 30px;   top: 30px;   width: 40%;   font-size: 16px;   text-align: right; }  /**/ .carrot-tranform-map-wrap{   position: absolute;   left: 30px;   top: 75px;   bottom: 40px;   right: 30px;   background: #fff;   box-shadow: 0 5px 10px 5px rgba(0, 0, 0, 0.1);   -webkit-font-smoothing: antialiased; 	-moz-osx-font-smoothing: grayscale; }  .carrot-tranform-map-grp-title {   display: block;   margin: 0;   text-align: center; }  .carrot-tranform-map-grp-title-inner {   display: block;   width: 200px;   padding: 2px;   margin-bottom: 13px;   background: #fff;   border-radius: 5px;   color: #666;   font-size: 11px;   font-weight: bold;   word-break: break-all; }
+
+            .cy-title {
+      word-break: break-all;
+      text-align: left;
+      width: 220px; 
+      height: 82px;
+      
+      
+    }
+    
+    
+    .cy-title__name {
+      word-break: break-all;
+          color: #000;
+          font-size: 13px;
+      text-align: left;
+      padding: 0px 10px;
+      font-family: 'VisbyCF-DemiBold';
+      margin-top: 10px;
+            
+    }
+    .cy-title__info {
+      word-break: break-word;
+          color: #000;
+          font-size: 13px;
+          font-family: 'VisbyCF-ExtraBold';
+      text-align: left;
+      padding: 0px 10px;
+      float: left;
+      
+    }
+        
+    .cy-title__icon-label {
+        float: right;
+        position: absolute;
+        top: 59px;
+        right: 7px;
+        font-size: 16px;
+    }
+    
+    .cy-title__icon {
+        color: #000;
+        font-size: 16px;
+        position: absolute;
+        top: 0px;
+        right: 15px;
+    }
+    .node-style-opac {
+        opacity: 0.5;
+    }
+    
+    .mouseover .cy-title__icon, .node-style-selected .cy-title__icon {
+          color: #fff;
+          font-size: 16px;
+          padding: 6px;
+          width: 16px;
+          height: 16px;
+
+        text-align: center;
+        position: absolute;
+        top: -10px;
+        right: -10px;
+      
+        /*background-color: #999;*/
+          border-radius: 50%;
+          background-color: #ff4323;
+    }
+        
+    button {
+        font-family: 'VisbyCF-ExtraBold';
+    }
+
+        </style>
+    </head>
+    <body>
+        <div class="carrot-tranform-map-wrap">
+            <div id="graph_container"></div>
+        </div>
+        <div class="demo-box-2">
+            <span style="color: #999"><i class="icons-c3p-arrow-up-tail"></i>Actions</span>
+            <button onclick="viewMappings()">Mapping Detail</button>
+            <button onclick="back()">Back</button>
+        </div>
+        <!-- For loading external data files -->
+        <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=Promise,fetch"></script>
+        
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.8.1/cytoscape.min.js"></script>
+        <script type="text/javascript" src="https://kaluginserg.github.io/cytoscape-node-html-label/dist/cytoscape-node-html-label.js"></script>
+        <script type="text/javascript">
+            var graphNodeWidth = 220;
+var graphNodeHeight = 82;
+
+var mappingWithTransformElementsData = {
+    nodes: [
+        {data: {type: 'elm-grp', id: 'SG1', label: 'ING_R_INT_EXT_ASSIGNMENT', class: 'parent'} },
+        {data: {type: 'elm-grp', id: 'TG1', label: 'LND_R_INT_EXT_ASSIGNMENT', class: 'parent'} },
+        {data: {type: 'elm-grp', id: 'TRANSFORMATION', label: 'TRANSFORMATION', class: 'parent'} },
+        
+        
+        {data: {type: 'elm-node', id: 's1', label: 'TRANCODE', parent: 'SG1', col: 0} },
+        {data: {type: 'elm-node', id: 's2', label: 'CONTROLLER_ID ', parent: 'SG1', col: 0}, classes: [] },
+        {data: {type: 'elm-node', id: 's3', label: 'SALES_FORCE_ID ', parent: 'SG1', col: 0}, classes: [] },
+        {data: {type: 'elm-node', id: 's4', label: 'BUSINESS_DATE ', parent: 'SG1', col: 0}, classes: [] },        
+        {data: {type: 'elm-node', id: 's5', label: 'START_DATE', parent: 'SG1', col: 0}, classes: [] },
+        {data: {type: 'elm-node', id: 's6', label: 'END_DATE', parent: 'SG1', col: 0}, classes: [] },
+        {data: {type: 'elm-node', id: 's7', label: '$$REFERENCEDATE$$', parent: 'SG1', col: 0}, classes: [] },
+        
+        
+        
+        {data: {type: 'elm-node', id: 't1', label: 'GA1 - TRANCODE', parent: 'TG1', col: 2}, classes: 'center-right' },
+        {data: {type: 'elm-node', id: 't2', label: 'GA2 - CONTROLLER_ID', parent: 'TG1', col: 2}, classes: 'center-right' },
+        {data: {type: 'elm-node', id: 't3', label: 'GA3 - SALES_FORCE_ID', parent: 'TG1', col: 2}, classes: 'center-right' },
+        {data: {type: 'elm-node', id: 't4', label: 'GD10 - BUSINESS_DATE', parent: 'TG1', col: 2}, classes: 'center-right' },
+        {data: {type: 'elm-node', id: 't5', label: 'GD2 - START_DATE', parent: 'TG1', col: 2}, classes: 'center-right' },        
+        {data: {type: 'elm-node', id: 't6', label: 'GD3 - END_DATE', parent: 'TG1', col: 2}, classes: 'center-right' },
+        {data: {type: 'elm-node', id: 't7', label: 'GENERATION_DATE - Internal: Source Gerenation Date', parent: 'TG1', col: 2}, classes: 'center-right' },
+        {data: {type: 'elm-node', id: 't8', label: 'REFERENCE_DATE - Internal: Source Reference Date', parent: 'TG1', col: 2}, classes: 'center-right' },
+        
+        
+        {data: {type: 'elm-grp', id: 'trans1', label: 'Convert.ToDate($$REFERENCEDATE$$,"yyyyMMddHHmmss")', parent: 'TRANSFORMATION', col: 1} },
+        
+        //Convert.ToDate($$REFERENCEDATE$$,"yyyyMMddHHmmss")
+        
+    ], 
+    edges: [
+        {data: {type: 'elm-edge', id: 'e1', source: 's1', target: 't1', label: '' }, classes: ['mapfamily-1', 'order-1'] },
+        {data: {type: 'elm-edge', id: 'e2', source: 's2', target: 't2', label: '' }, classes: ['mapfamily-2', 'order-1'] },
+        {data: {type: 'elm-edge', id: 'e3', source: 's3', target: 't3', label: '' }, classes: ['mapfamily-3', 'order-1'] },
+        {data: {type: 'elm-edge', id: 'e4', source: 's4', target: 't4', label: '' }, classes: ['mapfamily-4', 'order-1'] },
+        {data: {type: 'elm-edge', id: 'e5', source: 's5', target: 't5', label: '' }, classes: ['mapfamily-5', 'order-1'] },
+        {data: {type: 'elm-edge', id: 'e6', source: 's6', target: 't6', label: '' }, classes: ['mapfamily-1', 'order-1'] },
+        
+        {data: {type: 'elm-edge', id: 'e7', source: 's7', target: 'trans1', label: '' }, classes: ['mapfamily-1', 'order-1'] },
+        {data: {type: 'elm-edge', id: 'e8', source: 'trans1', target: 't7', label: '' }, classes: ['mapfamily-1', 'order-1'] },
+        {data: {type: 'elm-edge', id: 'e9', source: 'trans1', target: 't8', label: '' }, classes: ['mapfamily-1', 'order-1'] },
+        
+    ]
+};
+
+
+var mappingElementsData = {
+    nodes: [
+        {data: {type: 'elm-grp', id: 'SG1', label: 'PCT_E_CONTRACTS', class: 'parent'} },
+        {data: {type: 'elm-grp', id: 'SG2', label: 'PCT_R_ASSIGNMENT_TYPES_PROV', class: 'parent'} },
+        {data: {type: 'elm-grp', id: 'TG1', label: 'CCT_E_PRECLEARING_ASSIGNMENTS_DIRENT', class: 'parent'} },
+        //{data: {type: 'elm-grp', id: 'TRANSFORMATION', label: 'TRANSFORMATION', class: 'parent'} },
+        
+        
+        {data: {type: 'elm-node', id: 's1', label: 'ARTEFACTKEY', parent: 'SG1', col: 0} },
+        {data: {type: 'elm-node', id: 's2', label: 'GA8 ', parent: 'SG1', col: 0}, classes: [] },
+        {data: {type: 'elm-node', id: 's3', label: 'GA4 ', parent: 'SG1', col: 0}, classes: [] },
+        {data: {type: 'elm-node', id: 's4', label: 'GA7 ', parent: 'SG1', col: 0}, classes: [] },
+        
+        {data: {type: 'elm-node', id: 's5', label: 'S.GA2', parent: 'SG2', col: 0}, classes: [] },
+        {data: {type: 'elm-node', id: 's6', label: 'S.GA37', parent: 'SG2', col: 0}, classes: [] },
+        {data: {type: 'elm-node', id: 's7', label: 'S.GA3', parent: 'SG2', col: 0}, classes: [] },
+        {data: {type: 'elm-node', id: 's8', label: '\'Follow rules\'', parent: 'SG2', col: 0}, classes: [] },
+        {data: {type: 'elm-node', id: 's9', label: 'S.GA23', parent: 'SG2', col: 0}, classes: [] },
+        
+        
+        
+        {data: {type: 'elm-node', id: 't1', label: 'ARTEFACTKEY', parent: 'TG1', col: 2}, classes: 'center-right' },
+        {data: {type: 'elm-node', id: 't2', label: 'GA1 - SUBSCRIPTION_ID', parent: 'TG1', col: 2}, classes: 'center-right' },
+        {data: {type: 'elm-node', id: 't3', label: 'GA10 - CUSTOMER_NUMBER', parent: 'TG1', col: 2}, classes: 'center-right' },
+        {data: {type: 'elm-node', id: 't4', label: 'GA11 - PRODUCT_COMMITMENT', parent: 'TG1', col: 2}, classes: 'center-right' },
+        {data: {type: 'elm-node', id: 't5', label: 'GA12 - FNVOID', parent: 'TG1', col: 2}, classes: 'center-right' },
+        
+        {data: {type: 'elm-node', id: 't6', label: 'GA2 - UNIFIED_VO', parent: 'TG1', col: 2}, classes: 'center-right' },
+        {data: {type: 'elm-node', id: 't7', label: 'GA3 - GENUINE_VO', parent: 'TG1', col: 2}, classes: 'center-right' },
+        {data: {type: 'elm-node', id: 't8', label: 'GA4 - CONTROLLER_ID', parent: 'TG1', col: 2}, classes: 'center-right' },
+        {data: {type: 'elm-node', id: 't9', label: 'GA5 - FORCE_PAYMENT', parent: 'TG1', col: 2}, classes: 'center-right' },
+        {data: {type: 'elm-node', id: 't10', label: 'GA6 - ASSIGNMENT_TYPE', parent: 'TG1', col: 2}, classes: 'center-right' },
+        
+    ], 
+    edges: [
+        {data: {type: 'elm-edge', id: 'e1', source: 's1', target: 't1', label: '' }, classes: ['mapfamily-1', 'order-1'] },
+        {data: {type: 'elm-edge', id: 'e1111', source: 's1', target: 't1', label: '' }, classes: ['mapfamily-1', 'order-2'] },
+        {data: {type: 'elm-edge', id: 'e2', source: 's1', target: 't2', label: '' }, classes: ['mapfamily-2', 'order-1'] },
+        {data: {type: 'elm-edge', id: 'e3', source: 's2', target: 't3', label: '' }, classes: ['mapfamily-3', 'order-1'] },
+        {data: {type: 'elm-edge', id: 'e4', source: 's3', target: 't4', label: '' }, classes: ['mapfamily-4', 'order-1'] },
+        {data: {type: 'elm-edge', id: 'e5', source: 's4', target: 't5', label: '' }, classes: ['mapfamily-5', 'order-1'] },
+        
+        {data: {type: 'elm-edge', id: 'e6', source: 's5', target: 't6', label: '' }, classes: ['mapfamily-1', 'order-1'] },
+        {data: {type: 'elm-edge', id: 'e7', source: 's6', target: 't7', label: '' }, classes: ['mapfamily-2', 'order-1'] },
+        {data: {type: 'elm-edge', id: 'e8', source: 's7', target: 't8', label: '' }, classes: ['mapfamily-3', 'order-1'] },
+        {data: {type: 'elm-edge', id: 'e9', source: 's8', target: 't9', label: '' }, classes: ['mapfamily-4', 'order-1'] },
+        {data: {type: 'elm-edge', id: 'e10', source: 's9', target: 't10', label: '' }, classes: ['mapfamily-5', 'order-1'] },
+        
+        {data: {type: 'elm-edge', id: 'e6', source: 'SG1', target: 'SG2', label: 'S.GA37 = T.GA12' }, classes: ['mapfamily-5', 'order-1'] },
+        
+    ]
+};
+
+var graphElementsData = {
+    nodes: [
+
+
+    /*
+     *
+     * Artefacts
+     *
+     *
+    **/
+    {data: {type: 'elm-node', id: 'ING1', label: '000111301\r\nEXT_SALES_FORCE', parent: 'INGEST', col: 0, class: 'parent', icon: 'icons-c3p-disc'}, classes: ['icon-file'], position: {x: 100, y: 0} },
+//    {data: {type: 'elm-node', id: 'ING1', label: '000111301\r\nEXT_SALES_FORCE', parent: 'INGEST', col: 0}, classes: ['icon-file'] },
+
+    {data: {type: 'elm-node', id: 'ING2', label: '000111302\r\nPROV_ASSIGMENT', parent: 'INGEST', col: 0}, classes: [], position: {x: 100, y: 115} },
+    {data: {type: 'elm-node', id: 'ING3', label: '000111303\r\nMICOS_COSTUMER_BASE_DELTA', parent: 'INGEST', col: 0}, classes: ['icon-file'], position: {x: 100, y: 200} },
+    {data: {type: 'elm-node', id: 'ING4', label: '000111304\r\nCENT_NAME_ACCOUNT_ASSIGNMENT', parent: 'INGEST', col: 0}, classes: ['icon-cylinder'], position: {x: 100, y: 300} },
+    {data: {type: 'elm-node', id: 'ING5', label: '000111305\r\nCENT_PARTY', parent: 'INGEST', col: 0}, classes: ['icon-cylinder'], position: {x: 100, y: 400} },
+    {data: {type: 'elm-node', id: 'ING6', label: '000111306\r\nPROVEMPLOYEEMASTERDATADDDFFFRRRRRRRRAAAAAADHTYKDKSLOERTGGFT', parent: 'INGEST', col: 0, icon: 'icons-c3p-disc'}, classes: [], position: {x: 100, y: 500} },
+    {data: {type: 'elm-node', id: 'ING7', label: '000111307\r\nCENT_CUSTOMER_ACCOUNT', parent: 'INGEST', col: 0}, classes: [], position: {x: 100, y: 600} },
+
+    {data: {type: 'elm-node', id: 'DF1', label: '000121301\r\nEXT_SALES_FORCE', parent: 'DATA_FEED', col: 1}, classes: [], position: {x: 400, y: 0} },
+    {data: {type: 'elm-node', id: 'DF2', label: '000121302\r\nPROV_ASSIGMENT', parent: 'DATA_FEED', col: 1}, classes: [], position: {x: 400, y: 100} },
+    {data: {type: 'elm-node', id: 'DF3', label: '000121303\r\nMICOS_COSTUMER_BASE_DELTA', parent: 'DATA_FEED', col: 1, icon: 'icons-c3p-document'}, classes: [], position: {x: 400, y: 200} },
+    {data: {type: 'elm-node', id: 'DF4', label: '000121304\r\nCENT_NAME_ACCOUNT_ASSIGNMENT', parent: 'DATA_FEED', col: 1}, classes: [], position: {x: 400, y: 300} },
+    {data: {type: 'elm-node', id: 'DF5', label: '000121305\r\nCENT_PARTY', parent: 'DATA_FEED', col: 1}, classes: [], position: {x: 400, y: 400} },
+    {data: {type: 'elm-node', id: 'DF6', label: '000121306\r\nCENT_CUSTOMER_ACCOUNT', parent: 'DATA_FEED', col: 1}, classes: [], position: {x: 400, y: 500} },
+
+    {data: {type: 'elm-node', id: 'CRD1', label: '000131301\r\nEXT_SALES_FORCE', parent: 'COMPOSITION_REFERENCE_DATA', col: 2}, classes: [], position: {x: 700, y: 0} },
+    {data: {type: 'elm-node', id: 'CRD2', label: '000131302\r\nPROV_ASSIGMENT', parent: 'COMPOSITION_REFERENCE_DATA', col: 2}, classes: [], position: {x: 700, y: 100}},
+    {data: {type: 'elm-node', id: 'CRD3', label: '000131303\r\nCENT_NAME_ACCOUNT_ASSIGNMENT', parent: 'COMPOSITION_REFERENCE_DATA', col: 2}, classes: [], position: {x: 700, y: 200} },
+    {data: {type: 'elm-node', id: 'CRD4', label: '000131304\r\nPRODUCTS', parent: 'COMPOSITION_REFERENCE_DATA', col: 2}, classes: [], position: {x: 700, y: 300} },
+    {data: {type: 'elm-node', id: 'CRD5', label: '000131305\r\nSERVICES', parent: 'COMPOSITION_REFERENCE_DATA', col: 2}, classes: [], position: {x: 700, y: 400} },
+
+    {data: {type: 'elm-node', id: 'CPE1', label: '000141301\r\nComissionable Contracts', parent: 'COMPOSITION_ENTITY', col: 2}, classes: [], position: {x: 700, y: 550} },
+
+    {data: {type: 'elm-node', id: 'PCRDA1', label: '000151301\r\nDIRECT_ASSIGNMENT_CENT', parent: 'PCTX_REFERENCE_DATA_ACQ', col: 3}, classes: [], position: {x: 1000, y: 0} },
+
+    {data: {type: 'elm-node', id: 'PCRDS1', label: '000161301\r\nDIRECT_ASSIGNMENT_CENT', parent: 'PCTX_REFERENCE_DATA_SSCH', col: 3}, classes: [], position: {x: 1000, y: 200} },
+
+    {data: {type: 'elm-node', id: 'PCE1', label: '000171301\r\nComissionable Contracts', parent: 'PCTX_ENTITY', col: 3}, classes: [], position: {x: 1000, y: 400} },
+
+    {data: {type: 'elm-node', id: 'CCE1', label: '000181301\r\nComissionable Contracts', parent: 'CCTX_ENTITY', col: 4}, classes: [], position: {x: 1300, y: 0} },
+
+    {data: {type: 'elm-node', id: 'EPC1', label: '000191301\r\nPRECLEARING', parent: 'EVTGEN_PRECLEARING', col: 5}, classes: [], position: {x: 1600, y: 0} },
+
+    {data: {type: 'elm-node', id: 'OUT1', label: '000201301\r\nABC_EXPORT_A', parent: 'OUTPUT', col: 6, icon: 'icons-c3p-document'}, classes: ['icon-file'], position: {x: 1900, y: 0} },
+    {data: {type: 'elm-node', id: 'OUT2', label: '000201302\r\nABC_EXPORT_B', parent: 'OUTPUT', col: 6, icon: 'icons-c3p-document'}, classes: ['icon-file'], position: {x: 1900, y: 100}  },
+    {data: {type: 'elm-node', id: 'OUT3', label: '000201303\r\nABC_EXPORT_C', parent: 'OUTPUT', col: 6, icon: 'icons-c3p-disc'}, classes: ['icon-file'], position: {x: 1900, y: 200}  },
+    {data: {type: 'elm-node', id: 'OUT4', label: '000201304\r\nABC_EXPORT_D', parent: 'OUTPUT', col: 6, icon: 'icons-c3p-disc'}, classes: ['icon-file'], position: {x: 1900, y: 300}  },
+
+
+    /*
+     *
+     * Stages
+     *
+     *
+    **/
+    {data: {type: 'elm-grp', id: 'INGEST', label: '\ue906 INGEST', class: 'parent'}, classes: 'elm-grp-title' },
+    {data: {type: 'elm-grp', id: 'DATA_FEED', label: '\ue939 DATA FEED', class: 'parent'}, classes: 'elm-grp-title'  },
+    {data: {type: 'elm-grp', id: 'COMPOSITION_REFERENCE_DATA', label: '\ue99e COMPOSITION | REF DATA', class: 'parent'}, classes: 'elm-grp-title'  },
+    {data: {type: 'elm-grp', id: 'COMPOSITION_ENTITY', label: '\ue939 COMPOSITION | ENTITY', class: 'parent'}, classes: 'elm-grp-title'  },
+    {data: {type: 'elm-grp', id: 'PCTX_REFERENCE_DATA_ACQ', label: '\ue99e PCTX | REF DATA ACQ', class: 'parent'}, classes: 'elm-grp-title' },
+    {data: {type: 'elm-grp', id: 'PCTX_REFERENCE_DATA_SSCH', label: '\ue99e PCTX | REF DATA SSCH', class: 'parent'} },
+    {data: {type: 'elm-grp', id: 'PCTX_ENTITY', label: '\ue99e PCTX | ENTITY', class: 'parent'} },
+    {data: {type: 'elm-grp', id: 'CCTX_ENTITY', label: '\ue99e CCTX | ENTITY', class: 'parent'} },
+    {data: {type: 'elm-grp', id: 'EVTGEN_PRECLEARING', label: '\ue99e EVTGEN | Preclearing', class: 'parent'} },
+    {data: {type: 'elm-grp', id: 'OUTPUT', label: '\ue91e OUTPUT', class: 'parent'} },
+
+
+  ],
+
+  edges: [
+
+
+    /*
+     *
+     * Mappings (setas)
+     *
+     *
+    **/
+    {data: {type: 'elm-edge', id: 'MAP010', source: 'ING1', target: 'DF1', label: '' }, classes: ['mapfamily-1', 'order-1'] },
+    {data: {type: 'elm-edge', id: 'MAP020', source: 'ING1', target: 'DF1', label: '' }, classes: ['mapfamily-1', 'order-2'] },
+    {data: {type: 'elm-edge', id: 'MAP030', source: 'ING2', target: 'DF2', label: '' }, classes: ['mapfamily-2', 'order-1'] },
+    {data: {type: 'elm-edge', id: 'MAP040', source: 'ING2', target: 'DF3', label: '' }, classes: ['mapfamily-2', 'order-2'] },
+    {data: {type: 'elm-edge', id: 'MAP050', source: 'ING3', target: 'DF3', label: '' }, classes: ['mapfamily-3', 'order-2'] },
+    {data: {type: 'elm-edge', id: 'MAP060', source: 'ING4', target: 'DF4', label: '' }, classes: ['mapfamily-4', 'order-1'] },
+    {data: {type: 'elm-edge', id: 'MAP070', source: 'ING5', target: 'DF5', label: '' }, classes: ['mapfamily-5', 'order-1'] },
+    {data: {type: 'elm-edge', id: 'MAP080', source: 'ING6', target: 'DF6', label: '' }, classes: ['mapfamily-6', 'order-1'] },
+    {data: {type: 'elm-edge', id: 'MAP090', source: 'ING7', target: 'DF6', label: '' }, classes: ['mapfamily-6', 'order-2'] },
+    {data: {type: 'elm-edge', id: 'MAP100', source: 'DF1', target: 'CRD1', label: '' }, classes: ['mapfamily-7', 'order-1'] },
+    {data: {type: 'elm-edge', id: 'MAP110', source: 'DF2', target: 'CRD2', label: '' }, classes: ['mapfamily-8', 'order-1'] },
+    {data: {type: 'elm-edge', id: 'MAP120', source: 'DF3', target: 'CRD3', label: '' }, classes: ['mapfamily-9', 'order-1'] },
+    {data: {type: 'elm-edge', id: 'MAP130', source: 'DF4', target: 'CRD4', label: '' }, classes: ['mapfamily-10', 'order-1'] },
+    {data: {type: 'elm-edge', id: 'MAP140', source: 'DF4', target: 'PCRDS1', label: '' }, classes: ['mapfamily-10', 'order-2'] },
+    {data: {type: 'elm-edge', id: 'MAP150', source: 'DF5', target: 'CRD4', label: '' }, classes: ['mapfamily-11', 'order-1'] },
+    {data: {type: 'elm-edge', id: 'MAP160', source: 'DF5', target: 'CRD5', label: '' }, classes: ['mapfamily-11', 'order-2'] },
+    {data: {type: 'elm-edge', id: 'MAP170', source: 'DF6', target: 'CPE1', label: '' }, classes: ['mapfamily-12', 'order-1'] },
+    {data: {type: 'elm-edge', id: 'MAP180', source: 'CRD1', target: 'PCRDA1', label: '' }, classes: ['mapfamily-13', 'order-1'] },
+    {data: {type: 'elm-edge', id: 'MAP190', source: 'CRD2', target: 'PCRDA1', label: '' }, classes: ['mapfamily-13', 'order-1'] },
+    {data: {type: 'elm-edge', id: 'MAP200', source: 'CRD5', target: 'PCRDA1', label: '' }, classes: ['mapfamily-13', 'order-2'] },
+    {data: {type: 'elm-edge', id: 'MAP210', source: 'CRD3', target: 'PCRDS1', label: '' }, classes: ['mapfamily-14', 'order-1'] },
+    {data: {type: 'elm-edge', id: 'MAP220', source: 'CRD4', target: 'PCRDS1', label: '' }, classes: ['mapfamily-14', 'order-1'] },
+    {data: {type: 'elm-edge', id: 'MAP230', source: 'CRD5', target: 'PCRDS1', label: '' }, classes: ['mapfamily-14', 'order-2'] },
+    {data: {type: 'elm-edge', id: 'MAP240', source: 'CPE1', target: 'PCE1', label: '' }, classes: ['mapfamily-15', 'order-1'] },
+    {data: {type: 'elm-edge', id: 'MAP250', source: 'PCRDA1', target: 'CCE1', label: '' }, classes: ['mapfamily-16', 'order-1'] },
+    {data: {type: 'elm-edge', id: 'MAP260', source: 'PCE1', target: 'CCE1', label: '' }, classes: ['mapfamily-16', 'order-2'] },
+    {data: {type: 'elm-edge', id: 'MAP270', source: 'PCRDS1', target: 'EPC1', label: '' }, classes: ['mapfamily-17', 'order-1'] },
+    {data: {type: 'elm-edge', id: 'MAP280', source: 'CCE1', target: 'EPC1', label: '' }, classes: ['mapfamily-17', 'order-2'] },
+    {data: {type: 'elm-edge', id: 'MAP290', source: 'EPC1', target: 'OUT1', label: '' }, classes: ['mapfamily-18', 'order-1'] },
+    {data: {type: 'elm-edge', id: 'MAP300', source: 'EPC1', target: 'OUT2', label: '' }, classes: ['mapfamily-18', 'order-1'] },
+    {data: {type: 'elm-edge', id: 'MAP310', source: 'EPC1', target: 'OUT3', label: '' }, classes: ['mapfamily-18', 'order-1'] },
+    {data: {type: 'elm-edge', id: 'MAP320', source: 'EPC1', target: 'OUT4', label: '' }, classes: ['mapfamily-18', 'order-1'] },
+  ]
+
+};
+
+var graphData = {nodes: [
+    
+], edges: []};
+
+init = function() {
+    
+    fetch('data.json', {mode: 'no-cors'}).then(function(res) {
+        return res.json()
+    })
+    .then(function(data) {
+        
+    graphData.nodes = graphData.nodes.concat(data.nodes);
+    graphData.edges = graphData.edges.concat(data.edges);
+    
+    var stages = [
+        'INGEST',
+        'DATA_FEED',
+        'ENTITY',
+        'REFERENCE_DATA',
+        'ENTITY_PERIOD',
+        'REFERENCE_DATA_PERIOD',
+        'CALCULATED_ATTRIBUTE_AGG_CUSTOM',
+        'ENTITY_CUSTOM',
+        'EVENT_CUSTOM',
+        'REFERENCE_DATA_CUSTOM',
+        'EVENT_TRANSACTION',
+        'OUTPUT'
+    ];
+
+    var xGap = 300;
+    var yGap = 100;
+    
+    var yParentGap = 100;
+
+    var startX = 30;
+    var startY = 30;
+
+    var curX = startX;
+    var curY = startY;
+
+    var prevLevel = 0;
+    var prevParent = '';
+    
+    
+    graphData.nodes.forEach(function(node, index) {
+        
+        if(node.data.type === 'elm-node') {
+            
+            if(prevLevel !== node.data.col) {
+                if(prevLevel > 0) {
+                    curX += xGap;
+                    curY = startY;
+                    
+                } 
+                prevLevel = node.data.col;
+            } else {
+            
+                curY += yGap;
+                
+                if(prevParent !== node.data.parent) {
+                    curY += yParentGap;
+                }
+            }
+            prevParent = node.data.parent;
+            node.position = {};
+            node.position.x = curX;
+            node.position.y = curY;
+            
+            // allow word break on _ (underscore) if needed
+            node.data.info = node.data.info.replace(/_/g, '_<wbr/>');
+        }
+        
+    });
+
+
+
+
+    var cy = window.cy = cytoscape({
+      container: document.getElementById('graph_container'),
+
+      //elements: graphElementsData,
+      elements: graphData,
+      minZoom: 0.5,
+      maxZoom: 1,
+      zoom: 1,
+      motionBlur: true,
+      motionBlurOpacity: 0.2,
+      wheelSensitivity: 0.1,
+      autoungrabify: true,
+
+      layout: {
+        name: 'preset',
+        fit: true,
+        //cols: 5,
+        padding: 0,
+        avoidOverlap: true,
+        avoidOverlapPadding: 40,
+        nodeDimensionsIncludeLabels: true,
+        spacingFactor: 1,
+        condense: true,
+        position: function(node){
+          return {
+            col: node.data('col')
+          };
+        },
+        animate: false
+      },
+
+      style: [
+
+        {
+          selector: 'node[type="elm-node"]',
+          style: {
+            //label: 'data(label)',
+            shape: 'rectangle',
+            width: graphNodeWidth,
+            height: graphNodeHeight,
+            //'height': '99px',
+            'background-color': '#ffffff',
+            'border-color': '#ababab',
+            'border-style': 'solid',
+            'border-width': '1px',
+            'ghost': 'yes',
+            'ghost-opacity': 0.20,
+            'ghost-offset-x': 1,
+            'ghost-offset-y': 1,
+            //'overlay-color': '#ffffff',
+            //'overlay-opacity': 0.2,
+            //'overlay-padding': 2
+            
+            
+            //'font-size': 5,
+            //color: '#ff0000',
+            //'text-valign' : 'center',
+            //'text-halign' : 'left',
+            //'text-wrap': 'wrap',
+            //'text-opacity': 0,
+            //'background-color': '#999',
+            //'background-opacity': 1,
+            //'background-image': function(evt){
+            //  var node = evt.json();
+            //  var node_label = graphNodeBackground( node.data );
+            //  return node_label;
+            //},
+          }
+        },
+        {
+          selector: 'node[type="elm-node-inner"]',
+          style: {
+            //label: 'data(label)',
+            shape: 'round-rectangle',
+            width: 32,
+            height: 32,
+
+            //'background-color': '#eaeaea',
+            //'font-size': 5,
+            //color: '#ff0000',
+            //'text-valign' : 'center',
+            //'text-halign' : 'right',
+            //'text-wrap': 'wrap',
+            //'text-opacity': 0,
+            //'background-color': '#999',
+            //'background-opacity': 1,
+            //'background-image': function(evt){
+            //  var node = evt.json();
+            //  var node_label = graphNodeBackground( node.data );
+            //  return node_label;
+            //},
+          }
+        },
+
+        {
+          selector: 'node[type="elm-grp"]',
+          style: {
+            label: 'data(label)',
+            'padding': 15,
+            'background-color': '#68788D',
+            'background-opacity': 0.05,
+            'border-width': 0.5,
+            'border-color' : '#68788d',
+            'border-style' : 'solid',
+            'border-opacity': 1,
+            'font-size': 14,
+            'font-family': 'VisbyCF-ExtraBold, c3p-icomoon',
+            color: '#000',
+            'text-valign' : 'top',
+            'text-halign' : 'center',
+            'text-margin-y' : -6,
+          }
+        },
+
+        {
+          selector: 'node.node-style-hover[type="elm-node"]',
+          pannable: true,
+          style: {
+            'background-color': '#000',
+          }
+        },
+
+        {
+          selector: 'node.node-style-tapped[type="elm-node"]',
+          pannable: true,
+          style: {
+            'background-color': 'blue',
+          }
+        },
+
+        {
+          selector: 'node.node-style-selected[type="elm-node"]',
+          pannable: true,
+          style: {
+            'background-color': '#fff',
+            'border-width': 2,
+            'border-color': '#ff4323',
+          }
+        },
+
+        {
+          selector: 'node.node-style-opac[type="elm-node"]',
+          pannable: true,
+          style: {
+            'opacity': 0.5,
+          }
+        },
+
+        {
+          selector: 'edge',
+          style: {
+            'width': 2,
+            'curve-style': 'bezier',
+            'control-point-step-size': 25,
+            'control-point-weight': 1,
+            'line-color': '#68788d',
+            'target-arrow-color': '#68788d',
+            'target-arrow-shape': 'triangle',
+            'arrow-scale': 1.2,
+            label: 'data(label)',
+            'text-margin-y' : -12,
+            'font-family': 'c3p-icomoon',
+            'opacity': 0.35,
+          }
+        },
+
+        {
+          selector: 'edge.edge-style-dimdown',
+          style: {
+            'opacity': 0.15,
+          }
+        },
+
+        {
+          selector: 'edge.edge-style-hover',
+          style: {
+            'line-color': '#000',
+            'target-arrow-color': '#000',
+            'z-compound-depth': 'top',
+            'opacity': 1,
+          }
+        },
+
+        {
+          selector: 'edge.edge-style-highlight',
+          style: {
+            'line-color': '#ff4323',
+            'target-arrow-color': '#ff4323',
+            'z-compound-depth': 'top',
+            'opacity': 1,
+          }
+        },
+
+        {
+          selector: 'edge.edge-style-connected-to-node',
+          style: {
+            'width': 3,
+            'line-color': '#ff4323',
+            'target-arrow-color': '#ff4323',
+            'z-compound-depth': 'top',
+            'opacity': 1,
+          }
+        },
+
+      ]
+    });
+
+    cy.nodeHtmlLabel([
+              {
+                  query: 'node[type="elm-node"]',
+                  cssClass: 'cy-title',
+                  tpl: function (nodeData) {
+
+                      //var nodeLabelSplit = nodeData.label.split('\r\n');
+                      var iconTop = '';
+                      if(nodeData.iconTop) {
+                        iconTop = '<div class="cy-title__icon"><i class="' + nodeData.iconTop + '"></i></div>';
+                      }
+
+                      var iconLabel = '';
+                      if(nodeData.icon) {
+                        iconLabel = '<div class="cy-title__icon-label"><i class="' + nodeData.icon + '"></i></div>';
+                      }
+                    return '<div class="' + nodeData.class + '">' + iconTop + '<div class="cy-title__name">' + nodeData.title + '</div>' +
+                      '<div class="cy-title__info">' + nodeData.info + '</div>' + 
+                      iconLabel + 
+                      '</div>';
+
+                  }
+              }
+      ]);
+
+    var selectedLabel = '';
+
+    cy.$('node[type="elm-node"]').on('mouseover', function (e) {
+      var ele = e.target;
+      ele.addClass('mouseover');
+
+      selectedLabel = ele.data('label');
+    //  ele.data('label', 'AAAAAAA\r\nBBBBBBBB');
+      ele.data('iconTop', 'icons-c3p-arrow-right-tail');
+      ele.data('class', 'mouseover');
+      //aaa(node.data.id);
+    });
+
+    cy.$('node[type="elm-node"]').on('mouseout', function (e) {
+      var ele = e.target;
+      ele.removeClass('mouseover');
+      var node = ele.json();
+      ele.data('label', selectedLabel);
+      if ( !ele.selected()  ){
+        ele.data('iconTop', null);
+        ele.data('class', '');
+ 
+        if(ele.hasClass('node-style-opac')) {
+            ele.data('class', 'node-style-opac');
+        }
+      }
+    //  aaa(node.data.id);
+    });
+
+    cy.$('edge').on('mouseover', function (e) {
+      var ele = e.target;
+
+      if ( !ele.selected() ){
+        ele.addClass('edge-style-hover');
+      }
+    });
+
+    cy.$('edge').on('mouseout', function (e) {
+      var ele = e.target;
+
+      if ( !ele.selected() ){
+        ele.removeClass('edge-style-hover');
+      }
+    });
+
+    cy.$('node[type="elm-node"]').on('select', function (e) {
+      var ele = e.target;
+      
+
+      cy.edges().addClass('edge-style-dimdown');
+
+      ele.removeClass('node-style-hover');
+      ele.addClass('node-style-selected');
+      ele.data('class', 'node-style-selected');
+
+      ele.outgoers().forEach(function(el) {
+          if(el.isNode()) {
+              //el.connectedEdges().addClass('edge-style-connected-to-node');
+              el.addClass('node-style-selected');
+          } else {
+              el.addClass('edge-style-connected-to-node');
+          }
+      });
+      
+      ele.incomers().forEach(function(el) {
+          if(el.isNode()) {
+              //el.connectedEdges().addClass('edge-style-connected-to-node');
+              el.addClass('node-style-selected');
+              
+          } else {
+              el.addClass('edge-style-connected-to-node');
+          }
+      });
+      
+      cy.nodes().forEach(function(el) {
+          
+          el.style('opacity', '1');
+          
+        if(el.hasClass('node-style-selected')) {
+            
+        } else {
+            if(!el.isParent()) {
+                el.addClass('node-style-opac');
+                el.data('class', 'node-style-opac');
+            }
+        }
+      });
+      
+    });
+
+
+    cy.$('node[type="elm-node"]').on('unselect', function (e) {
+      var ele = e.target;
+
+      cy.edges().removeClass('edge-style-dimdown');
+
+      ele.removeClass(['node-style-hover', 'node-style-selected', 'node-style-tapped']);
+
+      ele.connectedEdges().removeClass('edge-style-connected-to-node');
+      ele.data('class', '');
+      ele.data('iconTop', null);
+      
+      ele.outgoers().forEach(function(el) {
+          if(el.isNode()) {
+              //el.connectedEdges().addClass('edge-style-connected-to-node');
+              el.removeClass('node-style-selected');
+              ele.data('class', '');
+          } else {
+              el.removeClass('edge-style-connected-to-node');
+          }
+      });
+      
+      ele.incomers().forEach(function(el) {
+          if(el.isNode()) {
+              //el.connectedEdges().addClass('edge-style-connected-to-node');
+              el.removeClass('node-style-selected');
+              
+              ele.data('class', '');
+          } else {
+              el.removeClass('edge-style-connected-to-node');
+          }
+      });
+      
+      cy.nodes().forEach(function(el) {
+        
+            el.style('opacity', '1');
+            el.data('class', '');
+        
+      });
+
+    });
+
+    cy.$('edge').on('select', function (e) {
+      var ele = e.target;
+      var mapFamily = ele.json().data.family;
+
+      cy.edges()
+      .removeClass('edge-style-hover')
+      .forEach(function (edge) {
+
+        var edgeMapFamily = edge.json().data.family;
+
+        if ( edgeMapFamily ===  mapFamily) {
+          edge.addClass('edge-style-highlight');
+          
+          cy.getElementById(edge.json().data.source).addClass('node-style-selected');
+          cy.getElementById(edge.json().data.target).addClass('node-style-selected');
+          
+        }
+        else{
+          edge.addClass('edge-style-dimdown');
+        }
+
+
+        
+      });
+      
+      cy.nodes().forEach(function(el) {
+          
+          el.style('opacity', '1');
+          
+        if(el.hasClass('node-style-selected')) {
+            
+        } else {
+            if(!el.isParent()) {
+                el.addClass('node-style-opac');
+                el.data('class', 'node-style-opac');
+            }
+        }
+      });
+      
+      
+    });
+
+    cy.$('edge').on('unselect', function (e) {
+      var ele = e.target;
+      var mapFamily = ele.json().data.family;
+
+      cy.edges()
+      .removeClass('edge-style-dimdown')
+      .forEach(function (edge) {
+          
+          var edgeMapFamily = edge.json().data.family;
+
+        if ( edgeMapFamily === mapFamily ) {
+          edge.removeClass('edge-style-highlight');
+          cy.getElementById(edge.json().data.source).removeClass('node-style-selected');
+          cy.getElementById(edge.json().data.target).removeClass('node-style-selected');
+        }
+
+      });
+      
+      cy.nodes().forEach(function(el) {
+        
+            el.style('opacity', '1');
+            el.data('class', '');
+        
+      });
+    });
+/*
+    cy.$('edge').on('click', function (e) {
+        var ele = e.target;
+
+      if ( !ele.selected() ){
+        viewMappings();
+      }
+    });
+*/
+    cy.ready(function (e) {
+
+      var nodesEnvelope = cy.nodes().renderedBoundingbox();
+      if ( nodesEnvelope.w < cy.width() ) {
+        cy.viewport({
+          pan: { x: 100, y: 100 }
+        });
+      }
+      else{
+        cy.viewport({
+          pan: { x: 0, y: 50 }
+        });
+      }
+
+      cy.nodes().forEach(function (node) {
+
+        node.panify();
+        
+        
+        if ( node.isParent() ){
+
+          node.unselectify();
+
+          var ele = node.json();
+          var originalLabel = ele.data.label;
+          var children = node.children();
+          node.style({
+            label: originalLabel + ' (' + children.length +')'
+          });
+
+          if ( ele.data.id === 'INGEST' ) {
+            node.style({
+              'background-color': '#68788D',
+              'background-opacity': 0.35
+            });
+          }
+          if ( ele.data.id === 'OUTPUT' ) {
+            node.style({
+              'background-color': '#0FCE68',
+              'background-opacity': 0.25
+            });
+          }
+          
+
+        }
+      });
+
+      cy.edges().forEach(function (edge) {
+
+        if ( edge.json().data.order > 1) {
+          edge.style({
+            'line-style': 'dashed',
+            'line-dash-pattern': [4,3],
+          });
+        }
+
+      });
+
+    });
+    
+    });
+};
+    
+viewMappings = function() {
+    if(typeof cy !== 'undefined') {
+        cy.destroy();
+    }
+    cy = window.cy = cytoscape({
+        container: document.getElementById('graph_container'),
+
+        //elements: mappingWithTransformElementsData,
+        elements: mappingElementsData,
+
+        minZoom: 0.5,
+        maxZoom: 1,
+        zoom: 1,
+        motionBlur: true,
+        motionBlurOpacity: 0.2,
+        wheelSensitivity: 0.1,
+        autoungrabify: true,
+
+        layout: {
+          name: 'grid',
+          fit: false,
+          cols: 2,
+          padding: 0,
+          avoidOverlapPadding: 70,
+          nodeDimensionsIncludeLabels: true,
+          spacingFactor: 1,
+          condense: true,
+          position: function(node){
+            return {
+              col: node.data('col')
+            };
+          },
+          animate: false
+        },
+
+  style: [
+
+    {
+      selector: 'node[type="elm-node"]',
+      style: {
+        label: 'data(label)',
+        //shape: 'round-rectangle',
+        //width: graphNodeWidth,
+        //height: graphNodeHeight,
+        'background-color': '#efefef',
+        'border-color': '#000000',
+        'border-style': 'solid',
+        'border-width': '1px',
+        //"text-valign": "center",
+        "text-halign": "left",
+        'font-size': 11,
+        //color: '#ff0000',
+        //'text-valign' : 'center',
+        //'text-halign' : 'left',
+        //'text-wrap': 'wrap',
+        //'text-opacity': 0,
+        //'background-color': '#999',
+        //'background-opacity': 1,
+        //'background-image': function(evt){
+        //  var node = evt.json();
+        //  var node_label = graphNodeBackground( node.data );
+        //  return node_label;
+        //},
+      }
+    },
+    {
+      selector: 'node.center-right[type="elm-node"]',
+      pannable: true,
+      style: {
+        //"text-valign": "center",
+        "text-halign": "right",
+      }
+    },
+    {
+      selector: 'node[type="elm-grp"]',
+      style: {
+        label: 'data(label)',
+        'min-width': graphNodeWidth,
+        'padding': 14,
+        'background-color': '#fff',
+        'background-opacity': 1,
+        'border-width': 0.5,
+        'border-color' : '#68788d',
+        'border-style' : 'dashed',
+        'border-opacity': 1,
+        'font-size': 11,
+        'font-family': 'c3p-icomoon',
+        'font-weight': 'bold',
+        color: '#666',
+        
+      }
+    },
+
+    {
+      selector: 'node.node-style-hover[type="elm-node"]',
+      pannable: true,
+      style: {
+        'background-color': '#000',
+      }
+    },
+
+    {
+      selector: 'node.node-style-tapped[type="elm-node"]',
+      pannable: true,
+      style: {
+        'background-color': 'blue',
+      }
+    },
+
+    {
+      selector: 'node.node-style-selected[type="elm-node"]',
+      pannable: true,
+      style: {
+        'background-color': '#ff4323',
+      }
+    },
+
+    {
+      selector: 'edge',
+      style: {
+        'width': 2,
+        'curve-style': 'bezier',
+        'control-point-step-size': 25,
+        'control-point-weight': 0.7,
+        'line-color': '#68788d',
+        'target-arrow-color': '#68788d',
+        'target-arrow-shape': 'triangle',
+        'arrow-scale': 1.2,
+        label: 'data(label)',
+        'text-margin-y' : -12,
+        'font-size': 9,
+      }
+    },
+
+    {
+      selector: 'edge.edge-style-dimdown',
+      style: {
+        'opacity': 0.15,
+      }
+    },
+
+    {
+      selector: 'edge.edge-style-hover',
+      style: {
+        'line-color': '#000',
+        'target-arrow-color': '#000',
+        'z-compound-depth': 'top',
+        'opacity': 1,
+      }
+    },
+
+    {
+      selector: 'edge.edge-style-highlight',
+      style: {
+        'line-color': '#ff4323',
+        'target-arrow-color': '#ff4323',
+        'z-compound-depth': 'top',
+        'opacity': 1,
+      }
+    },
+
+    {
+      selector: 'edge.edge-style-connected-to-node',
+      style: {
+        'width': 3,
+        'line-color': '#ff4323',
+        'target-arrow-color': '#ff4323',
+        'z-compound-depth': 'top',
+        'opacity': 1,
+      }
+    },
+
+  ]
+});
+      
+      /*
+      cy.nodeHtmlLabel([
+          {
+              query: 'node[type="elm-node"]',
+              cssClass: 'cy-title',
+              tpl: function (nodeData) {
+                var icon = '';
+                  
+                return '<div class="' + nodeData.class + '">' +
+                  '<div class="cy-title__info">' + nodeData.label + '</div>' 
+                  + icon + '</div>';
+                  
+              }
+          },
+          {
+              query: 'node[type="elm-edge"]',
+              cssClass: 'cy-title',
+              tpl: function (nodeData) {
+                  console.log('aaa');
+                var icon = '';
+                  
+                return '<div class="' + nodeData.class + '">' +
+                  '<div class="cy-title__info">' + nodeData.label + '</div>' 
+                  + icon + '</div>';
+                  
+              }
+          }
+         
+       
+  ]);*/
+  
+     cy.ready(function (e) {
+
+      var nodesEnvelope = cy.nodes().renderedBoundingbox();
+      if ( nodesEnvelope.w < cy.width() ) {
+        cy.viewport({
+          pan: { x: 100, y: 100 }
+        });
+      }
+      else{
+        cy.viewport({
+          pan: { x: 0, y: 50 }
+        });
+      }
+
+      cy.nodes().forEach(function (node) {
+
+        node.panify();
+
+        if ( node.isParent() ){
+
+          node.unselectify();
+
+          var ele = node.json();
+          var originalLabel = ele.data.label;
+          var children = node.children();
+          node.style({
+            label: originalLabel + ' (' + children.length +')'
+          });
+
+          if ( ele.data.id === 'SOURCEARTEFACT' ) {
+            node.style({
+              'background-color': '#cad0d7',
+            });
+          }
+          if ( ele.data.id === 'TARGETARTEFACT' ) {
+            node.style({
+              'background-color': '#c3f3d9',
+            });
+          }
+
+        }
+
+      });
+  });
+};
+
+back = function() {
+    init();
+};
+
+init();
+//viewMappings();
+        </script>
+    </body>
+</html>
