@@ -1,9 +1,9 @@
 {"nodes": 
 [
-{"data": {"type": "elm-node", "id": "202176782851", "title": "202176782851", "info": "ING_T_BILL_PERIOD", "parent": "INGEST", "icon": "icons-c3p-wallet", "col": 1}},
-{"data": {"type": "elm-node", "id": "202176782778", "title": "202176782778", "info": "ING_T_MANUAL_CO_TURNOVER_SRNA", "parent": "INGEST", "icon": "icons-c3p-wallet", "col": 1}},
-{"data": {"type": "elm-node", "id": "202176782843", "title": "202176782843", "info": "ING_R_SALES_ASSIGNMENT", "parent": "INGEST", "icon": "icons-c3p-wallet", "col": 1}},
-{"data": {"type": "elm-node", "id": "202176782834", "title": "202176782834", "info": "ING_T_CO_TURNOVER", "parent": "INGEST", "icon": "icons-c3p-wallet", "col": 1}},
+{"data": {"type": "elm-node", "id": "202176782851", "title": "202176782851", "info": "ING_T_BILL_PERIOD", "parent": "INGEST", "icon": "icons-c3p-document", "col": 1}},
+{"data": {"type": "elm-node", "id": "202176782778", "title": "202176782778", "info": "ING_T_MANUAL_CO_TURNOVER_SRNA", "parent": "INGEST", "icon": "icons-c3p-document", "col": 1}},
+{"data": {"type": "elm-node", "id": "202176782843", "title": "202176782843", "info": "ING_R_SALES_ASSIGNMENT", "parent": "INGEST", "icon": "icons-c3p-document", "col": 1}},
+{"data": {"type": "elm-node", "id": "202176782834", "title": "202176782834", "info": "ING_T_CO_TURNOVER", "parent": "INGEST", "icon": "icons-c3p-document", "col": 1}},
 {"data": {"type": "elm-node", "id": "202176782775", "title": "202176782775", "info": "ING_T_MANUAL_CO_TURNOVER", "parent": "INGEST", "icon": "icons-c3p-wallet", "col": 1}},
 {"data": {"type": "elm-node", "id": "202176782828", "title": "202176782828", "info": "ING_T_CO_TURNOVER_SRNA", "parent": "INGEST", "icon": "icons-c3p-wallet", "col": 1}},
 {"data": {"type": "elm-node", "id": "202176782694", "title": "202176782694", "info": "ING_CANCEL_STP_REASON", "parent": "INGEST", "icon": "", "col": 1}},
@@ -249,12 +249,12 @@
 {"data": {"type": "elm-node", "id": "202176782736", "title": "202176782736", "info": "EVG_STP_REASON_CLGC", "parent": "EVENT_TRANSACTION", "icon": "", "col": 6}},
 {"data": {"type": "elm-node", "id": "202176782705", "title": "202176782705", "info": "EVG_STP_REASON_CLCC", "parent": "EVENT_TRANSACTION", "icon": "", "col": 6}},
 {"data": {"type": "elm-node", "id": "202176782740", "title": "202176782740", "info": "EVG_STP_REASON_CLCA", "parent": "EVENT_TRANSACTION", "icon": "", "col": 6}},
-{"data": {"type": "elm-node", "id": "202176782907", "title": "202176782907", "info": "RPT_DISCOUNT_PROSPECTS_INDENT", "parent": "OUTPUT", "icon": "", "col": 7}},
-{"data": {"type": "elm-node", "id": "202176782912", "title": "202176782912", "info": "Callidus Lookup Table Cells and Indices File", "parent": "OUTPUT", "icon": "", "col": 7}},
-{"data": {"type": "elm-node", "id": "102176782629", "title": "102176782629", "info": "Callidus Category File", "parent": "OUTPUT", "icon": "", "col": 7}},
-{"data": {"type": "elm-node", "id": "102176782630", "title": "102176782630", "info": "Callidus Fixed Value and Variable Assignment for Monthly Period File", "parent": "OUTPUT", "icon": "", "col": 7}},
-{"data": {"type": "elm-node", "id": "102176782631", "title": "102176782631", "info": "Callidus Fixed Value File", "parent": "OUTPUT", "icon": "", "col": 7}},
-{"data": {"type": "elm-node", "id": "102176782632", "title": "102176782632", "info": "Callidus Manual Deposits", "parent": "OUTPUT", "icon": "", "col": 7}},
+{"data": {"type": "elm-node", "id": "202176782907", "title": "202176782907", "info": "RPT_DISCOUNT_PROSPECTS_INDENT", "parent": "OUTPUT", "icon": "icons-c3p-disc", "col": 7}},
+{"data": {"type": "elm-node", "id": "202176782912", "title": "202176782912", "info": "Callidus Lookup Table Cells and Indices File", "parent": "OUTPUT", "icon": "icons-c3p-disc", "col": 7}},
+{"data": {"type": "elm-node", "id": "102176782629", "title": "102176782629", "info": "Callidus Category File", "parent": "OUTPUT", "icon": "icons-c3p-disc", "col": 7}},
+{"data": {"type": "elm-node", "id": "102176782630", "title": "102176782630", "info": "Callidus Fixed Value and Variable Assignment for Monthly Period File", "parent": "OUTPUT", "icon": "icons-c3p-disc", "col": 7}},
+{"data": {"type": "elm-node", "id": "102176782631", "title": "102176782631", "info": "Callidus Fixed Value File", "parent": "OUTPUT", "icon": "icons-c3p-disc", "col": 7}},
+{"data": {"type": "elm-node", "id": "102176782632", "title": "102176782632", "info": "Callidus Manual Deposits", "parent": "OUTPUT", "icon": "icons-c3p-disc", "col": 7}},
 {"data": {"type": "elm-node", "id": "102176782633", "title": "102176782633", "info": "Callidus Customers File", "parent": "OUTPUT", "icon": "", "col": 7}},
 {"data": {"type": "elm-node", "id": "102176782634", "title": "102176782634", "info": "Callidus Fixed Value and Variable Assignment for Quarterly Period File", "parent": "OUTPUT", "icon": "", "col": 7}},
 {"data": {"type": "elm-node", "id": "102176782635", "title": "102176782635", "info": "Callidus Extended Position Attributes File", "parent": "OUTPUT", "icon": "", "col": 7}},
@@ -284,8 +284,8 @@
 {"data": {"type": "elm-node", "id": "102176782659", "title": "102176782659", "info": "Callidus Variable Assignment File", "parent": "OUTPUT", "icon": "", "col": 7}},
 {"data": {"type": "elm-node", "id": "102176782660", "title": "102176782660", "info": "Callidus Transaction Signal Assignments + Extended + reporting Attributes File", "parent": "OUTPUT", "icon": "", "col": 7}},
 {"data": {"type": "elm-node", "id": "102176782661", "title": "102176782661", "info": "Callidus Transaction Signal Extended + Reporting Attributes File", "parent": "OUTPUT", "icon": "", "col": 7}},
-{"data": {"type": "elm-node", "id": "102176782627", "title": "102176782627", "info": "Callidus Manual Credit File", "parent": "OUTPUT", "icon": "", "col": 7}},
-{"data": {"type": "elm-node", "id": "102176782628", "title": "102176782628", "info": "Callidus Category Classifer File", "parent": "OUTPUT", "icon": "", "col": 7}},
+{"data": {"type": "elm-node", "id": "102176782627", "title": "102176782627", "info": "Callidus Manual Credit File", "parent": "OUTPUT", "icon": "icons-c3p-disc", "col": 7}},
+{"data": {"type": "elm-node", "id": "102176782628", "title": "102176782628", "info": "Callidus Category Classifer File", "parent": "OUTPUT", "icon": "icons-c3p-disc", "col": 7}},
 
 
    

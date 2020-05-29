@@ -11,6 +11,8 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!--link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" /-->
         <link rel="stylesheet" href="fonts/c3p-icomoon/style.css" />
+        <link rel="stylesheet" href="https://unpkg.com/tomloprodModal@1.0.2/src/tomloprodModal-1.0.2.min.css" />
+        
         
         <style>
             
@@ -102,6 +104,29 @@ and open the template in the editor.
         font-family: 'VisbyCF-ExtraBold';
     }
 
+    #popuptable {
+        font-family: 'VisbyCF-DemiBold';
+        font-size: 14px;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    #popuptable td, #popuptable th {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+
+    #popuptable tr:nth-child(even){background-color: #fff;}
+
+    #popuptable tr:hover {background-color: #f2f2f2;}
+
+    #popuptable th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #ff4323;
+        color: white;
+    }
         </style>
     </head>
     <body>
@@ -112,12 +137,42 @@ and open the template in the editor.
             <span style="color: #999"><i class="icons-c3p-arrow-up-tail"></i>Actions</span>
             <button onclick="viewMappings()">Mapping Detail</button>
         </div>
+        <div 
+            data-tm-title="tomloprodModal 1" 
+            data-tm-bgcolor = "#e74c3c"
+            data-tm-textcolor = "white"
+            data-tm-closetimer="3000"
+            data-tm-content="My background color is red! :-) <p><b>And I will self-destruct in 3 seconds</b>" 
+            class="tm-modal tm-effect tm-draggable" 
+            id="testModal1">
+
+            <div class="tm-wrapper">
+                <div class="tm-title">
+                    <span class="tm-XButton tm-closeButton"></span>  
+                    <h3 class="tm-title-text"> </h3> 
+                </div>
+                <div class="tm-content"> </div>
+            </div>
+
+        </div>
+        
         <!-- For loading external data files -->
         <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=Promise,fetch"></script>
         
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.8.1/cytoscape.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.15.0/cytoscape.min.js"></script>
         <script type="text/javascript" src="https://kaluginserg.github.io/cytoscape-node-html-label/dist/cytoscape-node-html-label.js"></script>
+        <script type="text/javascript" src="https://unpkg.com/cytoscape-dblclick/dist/index.js"></script>
+        <script type="text/javascript" src="https://unpkg.com/tomloprodModal@1.0.2/src/tomloprodModal-1.0.2.min.js"></script>
+        
+        
         <script type="text/javascript">
+            TomloprodModal.start({
+                closeOut: true,
+                showMessages: true,
+                bgColor: "#FFFFFF",
+                textColor: "#333333"
+            });
+
             var graphNodeWidth = 220;
 var graphNodeHeight = 82;
 
@@ -622,6 +677,50 @@ init = function() {
       ]
     });
 
+    cy.dblclick();
+
+    cy.on('dblclick', function(e) {
+        if(e.target[0]) {
+            console.log(e.target[0]._private.data);
+        }
+        
+       if(e.target[0] && e.target[0]._private.data.type === 'elm-node') {
+           
+            TomloprodModal.create({
+                bgColor: "#FFFFFF",
+                textColor: "#333333",
+                title: e.target[0]._private.data.info,
+                content: '<table id="popuptable"><thead><th>Phisical Name</th><th>Semantic Name</th></thead><tbody>' + 
+                            '<tr><td>GA1</td><td>TRANCODE</td></tr>' +
+                            '<tr><td>GA2</td><td>MANAGER_CONTROLLER_ID</td></tr>' +
+                            '<tr><td>GA3</td><td>SUBORDINATE_CONTROLLER_ID</td></tr>' +
+                            '<tr><td>GA4</td><td>STRUCTURE_TYPE_IND</td></tr>' +
+                            '<tr><td>GA5</td><td>RELATION_TYPE</td></tr>' +
+                            '</tbody></table>'
+                //closeTimer: 1000
+            });
+        } else if(e.target[0] && e.target[0]._private.data.type === 'elm-edge') {
+            TomloprodModal.create({
+                bgColor: "#FFFFFF",
+                textColor: "#333333",
+                title: 'Mapping XXXXXXXXXX',
+                content: '<table id="popuptable"><thead><th>Origin</th><th>Target</th></thead><tbody>' + 
+                            '<tr><td>GA1</td><td>REPORTATTRIBUTE1 - COMMENTS</td></tr>' +
+                            '<tr><td>GA2</td><td>REPORTATTRIBUTE2 - SUBSCRIPTION_ID</td></tr>' +
+                            '<tr><td>GA3</td><td>SUBORDINATE_CONTROLLER_ID</td></tr>' +
+                            '<tr><td>GA4</td><td>STRUCTURE_TYPE_IND</td></tr>' +
+                            '<tr><td>GA5</td><td>RELATION_TYPE</td></tr>' +
+                            '</tbody></table>'
+                //closeTimer: 1000
+            });
+        }
+        
+        
+        
+        
+        
+    });
+    
     cy.nodeHtmlLabel([
               {
                   query: 'node[type="elm-node"]',
@@ -734,6 +833,9 @@ init = function() {
             }
         }
       });
+      
+      
+      
       
     });
 
