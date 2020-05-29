@@ -135,7 +135,9 @@ and open the template in the editor.
         </div>
         <div class="demo-box-2">
             <span style="color: #999"><i class="icons-c3p-arrow-up-tail"></i>Actions</span>
-            <button onclick="viewMappings()">Mapping Detail</button>
+            <!--button onclick="viewMappings()">Mapping Detail</button-->
+            <button onclick="init('data.json')">All</button>
+            <button onclick="init('artefact_group.json')">Artefact Group</button>
         </div>
         <div 
             data-tm-title="tomloprodModal 1" 
@@ -393,13 +395,20 @@ var graphElementsData = {
 
 };
 
-var graphData = {nodes: [
-    
-], edges: []};
+var cy;
 
-init = function() {
+init = function(json) {
     
-    fetch('data.json', {mode: 'no-cors'}).then(function(res) {
+    var graphData = {nodes: [
+    
+    ], edges: []};
+
+    if(cy) {
+        cy.destroy();
+        document.getElementById('graph_container').innerHTML = '';
+    }
+    //fetch('data.json', {mode: 'no-cors'}).then(function(res) {
+    fetch(json, {mode: 'no-cors'}).then(function(res) {
         return res.json()
     })
     .then(function(data) {
@@ -470,7 +479,7 @@ init = function() {
 
 
 
-    var cy = window.cy = cytoscape({
+    cy = window.cy = cytoscape({
       container: document.getElementById('graph_container'),
 
       //elements: graphElementsData,
@@ -1019,16 +1028,8 @@ init = function() {
     
     });
 };
-    
-viewMappings = function() {
-    window.location.href = 'detail.html';
-};
 
-back = function() {
-    init();
-};
-
-init();
+init('data.json');
 //viewMappings();
         </script>
     </body>

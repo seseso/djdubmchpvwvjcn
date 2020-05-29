@@ -1,0 +1,29 @@
+{"nodes": 
+[
+{"data": {"type": "elm-node", "id": "202176782833", "title": "202176782833", "info": "ING_R_TITLE", "parent": "INGEST", "icon": "", "col": 1}},
+{"data": {"type": "elm-node", "id": "202176782831", "title": "202176782831", "info": "LND_R_TITLE", "parent": "DATA_FEED", "icon": "", "col": 2}},
+{"data": {"type": "elm-node", "id": "202176782832", "title": "202176782832", "info": "CMP_R_TITLE", "parent": "REFERENCE_DATA", "icon": "", "col": 3}},
+{"data": {"type": "elm-node", "id": "202176782829", "title": "202176782829", "info": "PCT_R_TITLE", "parent": "REFERENCE_DATA_PERIOD", "icon": "", "col": 4}},
+{"data": {"type": "elm-node", "id": "202176783242", "title": "202176783242", "info": "CCT_R_TITLE_DIR", "parent": "REFERENCE_DATA_CUSTOM", "icon": "", "col": 5}},
+{"data": {"type": "elm-node", "id": "202176782825", "title": "202176782825", "info": "CCT_R_TITLE_IND", "parent": "REFERENCE_DATA_CUSTOM", "icon": "", "col": 5}},
+{"data": {"type": "elm-node", "id": "202176783241", "title": "202176783241", "info": "EVG_R_TITLE_DIR", "parent": "EVENT_TRANSACTION", "icon": "", "col": 6}},
+{"data": {"type": "elm-node", "id": "202176782827", "title": "202176782827", "info": "EVG_R_TITLE_IND", "parent": "EVENT_TRANSACTION", "icon": "", "col": 6}},
+
+{"data": {"type": "elm-grp", "id": "INGEST", "label": "\ue906 INGEST", "class": "parent"}},
+{"data": {"type": "elm-grp", "id": "DATA_FEED", "label": "\ue99e DATA FEED", "class": "parent"}},
+{"data": {"type": "elm-grp", "id": "REFERENCE_DATA", "label": "\ue99e REFERENCE_DATA", "class": "parent"}},
+{"data": {"type": "elm-grp", "id": "REFERENCE_DATA_PERIOD", "label": "\ue99e REFERENCE_DATA_PERIOD", "class": "parent"} },
+{"data": {"type": "elm-grp", "id": "REFERENCE_DATA_CUSTOM", "label": "\ue99e REFERENCE_DATA_CUSTOM", "class": "parent"} },
+{"data": {"type": "elm-grp", "id": "EVENT_TRANSACTION", "label": "\ue99e EVENT_TRANSACTION", "class": "parent"} }
+], 
+"edges": 
+            [
+{"data": {"type": "elm-edge", "id": "edg_2", "source": "202176783242", "target": "202176783241", "family": 204353565963, "order": 1, "label": ""}},
+{"data": {"type": "elm-edge", "id": "edg_3", "source": "202176782832", "target": "202176782829", "family": 204353565603, "order": 1, "label": ""}},
+{"data": {"type": "elm-edge", "id": "edg_4", "source": "202176782833", "target": "202176782831", "family": 204353565597, "order": 1, "label": ""}},
+{"data": {"type": "elm-edge", "id": "edg_5", "source": "202176782829", "target": "202176783242", "family": 204353565962, "order": 1, "label": ""}},
+{"data": {"type": "elm-edge", "id": "edg_6", "source": "202176782831", "target": "202176782832", "family": 204353565598, "order": 1, "label": ""}},
+{"data": {"type": "elm-edge", "id": "edg_8", "source": "202176782829", "target": "202176782825", "family": 204353565599, "order": 1, "label": ""}},
+{"data": {"type": "elm-edge", "id": "edg_9", "source": "202176782825", "target": "202176782827", "family": 204353565600, "order": 1, "label": ""}}
+            ]
+}
